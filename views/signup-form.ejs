@@ -1,0 +1,24 @@
+
+ 
+    <%- include('./layout/header' ) %>
+
+    <main>
+      <section class="signup-container">
+        <form class="signup-form" action="/signup" method="POST">
+          <h2>Sign Up</h2>
+          <label for="firstName">First Name:</label>
+          <input type="text" id="firstName" name="firstName" required />
+          <label for="lastName">Last Name:</label>
+          <input type="text" id="lastName" name="lastName" required />
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required />
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+          <label for="confirmPassword">Confirm Password:</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" required />
+          <button type="submit" class="signup-button">Sign up</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

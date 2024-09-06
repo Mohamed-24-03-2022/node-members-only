@@ -1,0 +1,122 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header h1 {
+  margin: 0;
+  padding: 10px;
+}
+header h1 span {
+  color: #fff;
+}
+header a {
+  color: #fff;
+  text-decoration: none;
+}
+header .header-right {
+  display: flex;
+  gap: 20px;
+  font-weight: bold;
+}
+main {
+  padding: 20px;
+}
+.inbox {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  width: 50%;
+}
+.inbox h2 {
+  margin-top: 0;
+}
+.inbox .message-count {
+  background-color: red;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 50%;
+  font-size: 0.8em;
+  vertical-align: top;
+}
+.create-message {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.message-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.message-item {
+  background-color: #f9f9f9;
+  margin: 20px 0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.message-item h3 {
+  margin: 0 0 5px;
+}
+.timestamp,
+.author {
+  display: block;
+  color: #888;
+  font-size: 0.8em;
+}
+.signup-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  margin: 0 auto;
+}
+.signup-container h2 {
+  margin-top: 0;
+  text-align: center;
+}
+.signup-container form {
+  display: flex;
+  flex-direction: column;
+}
+.signup-container label {
+  margin-top: 10px;
+}
+.signup-container input {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+.signup-container .signup-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.error {
+  color: red;
+  font-size: small;
+}

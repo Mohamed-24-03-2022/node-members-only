@@ -1,0 +1,28 @@
+
+<%- include('./layout/header') %>
+    <main>
+      <section class="inbox">
+        <h2>Inbox <span class="message-count"><%= messages ? messages.length : 0 %></span></h2>
+        <a href="/create-message"><button class="create-message">Create a message</button></a>
+        <ul class="message-list">
+          <%messages && messages.forEach(function(message) { %>
+          <li class="message-item">
+            <h3><%= message.title %></h3>
+            <p><%= message.text %></p>
+            <span class="timestamp">On <%= message.added %> (Coordinated Universal Time)</span>
+            
+            <%if(locals.currentUser){ %>
+              <span class="author">By @<%=message.owner.username%> </span>
+            <%} else {%>
+              <span class="author hidden-author"> Log in to see the author </span>
+              <%} %>
+
+
+          </li>
+          <% }); %>
+        </ul>
+      </section>
+    </main>
+    <script src="path/to/your/scripts.js"></script>
+  </body>
+</html>

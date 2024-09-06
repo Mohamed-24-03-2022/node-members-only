@@ -1,0 +1,15 @@
+ 
+    <%- include('./layout/header' ) %>
+
+    <main>
+      <section class="signup-container">
+        <form class="signup-form" action="/admin" method="POST">
+          <h2>Become an admin</h2>
+          <label for="password">Admin Secret:</label>
+          <input type="password" id="password" name="password" required />
+          <button type="submit" class="signup-button">Send</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Club House</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-left">
+        <a href="/" style="cursor: pointer">
+          <h1>Members<span>Only</span></h1>
+        </a>
+      </div>
+      <div class="header-right">
+        <%if(locals.currentUser) {%>
+        <span>Hi <%= locals.currentUser.username %>!</span>
+        <a href="/admin">Become an admin</a>
+        <a href="/logout">Log Out</a>
+        <%} else {%>
+        <a href="/login">Log in</a>
+        <a href="/signup">Sign up</a>
+        <%} %>
+      </div>
+    </header>
+  </body>
+</html>
