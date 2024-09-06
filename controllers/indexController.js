@@ -57,12 +57,13 @@ const get = async (req, res, next) => {
   const messagesWithOwner = await Promise.all(
     messages.map(async (message) => {
       const rows = await getUserById(message.owner_id);
-      const added = message.added.toLocaleDateString('en-US', {
+      const added = message.added.toLocaleString('en-US', {
         year: 'numeric',
         month: 'short',
         day: 'numeric',
         hour: '2-digit',
         minute: '2-digit',
+        hour12: true,
       });
 
       return { ...message, added, owner: rows[0] };
@@ -127,8 +128,10 @@ const msgFormPost = async (req, res, next) => {
   }
 }
 const deleteMessage = async (req, res, next) => {
-  await destroyMessage(req.params.id);
-  res.redirect('/');
+  if (req.isAuthenticated() && req.user.is_admin) {
+    await destroyMessage(req.params.id);
+    return res.redirect('/');
+  }
 }
 
 const logoutGet = (req, res, next) => {

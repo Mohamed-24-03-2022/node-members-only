@@ -10,7 +10,7 @@ const createUser = async (
   last_name,
   username,
   password,
-  is_member = false,
+  is_member = true,
   is_admin = false
 ) => {
   const { rows } = await pool.query(
