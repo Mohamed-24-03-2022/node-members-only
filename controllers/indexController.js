@@ -1,6 +1,8 @@
+require('dotenv').config();
+
 const bcrypt = require('bcryptjs');
 const { body, validationResult } = require('express-validator');
-const { createUser, getAllMessages, createMessage, getUserById } = require('../model/queries');
+const { createUser, getAllMessages, createMessage, getUserById, destroyMessage, setUserAsAdmin } = require('../model/queries');
 const passport = require('passport');
 
 
@@ -76,8 +78,7 @@ const signupFormGet = (req, res, next) => {
 const signupFormPost = (req, res, next) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-    //TODO show the error on the signup form  
-    return res.status(400).json(result.array());
+    return res.render('signup-form', { errors: result.array() });
   }
 
   const { firstName, lastName, username, password, confirmPassword } = req.body;
@@ -113,8 +114,7 @@ const msgFormGet = (req, res, next) => {
 const msgFormPost = async (req, res, next) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-    //TODO show the error on the msgForm  
-    return res.status(400).json(result.array());
+    return res.render('msg-form', { errors: result.array() });
   }
 
   if (req.isAuthenticated()) {
@@ -123,12 +123,13 @@ const msgFormPost = async (req, res, next) => {
     await createMessage(title, text, date, req.user.id);
     res.redirect('/');
   } else {
-    //TODO show the error when trying to create a msg when not authenticated
-    // return res.status(400).json({ error: 'Not Authenticated' });
     res.render('msg-form', { error: { status: 400, message: 'You need to sign in to be able to post' } });
   }
 }
-
+const deleteMessage = async (req, res, next) => {
+  await destroyMessage(req.params.id);
+  res.redirect('/');
+}
 
 const logoutGet = (req, res, next) => {
   req.logout((err) => {
@@ -142,6 +143,14 @@ const logoutGet = (req, res, next) => {
 const adminGet = (req, res, next) => {
   res.render('admin');
 }
+const adminPost = async (req, res, next) => {
+  if (req.isAuthenticated() && req.body.password === process.env.ADMIN_PW) {
+    await setUserAsAdmin(req.user.id);
+    res.redirect('/');
+  } else {
+    res.render('admin', { error: { status: 400, message: 'Please inter a valid admin password' } });
+  }
+}
 
 
 module.exports = {
@@ -154,7 +163,8 @@ module.exports = {
   loginFormPost,
   msgFormGet,
   msgFormPost,
+  deleteMessage,
   logoutGet,
   adminGet,
-
+  adminPost,
 }

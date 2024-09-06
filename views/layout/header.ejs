@@ -4,6 +4,7 @@
     <title>Club House</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
+
   <body>
     <header>
       <div class="header-left">
@@ -14,7 +15,12 @@
       <div class="header-right">
         <%if(locals.currentUser) {%>
         <span>Hi <%= locals.currentUser.username %>!</span>
-        <a href="/admin">Become an admin</a>
+        <%if(locals.currentUser.is_admin) {%>
+        <a href="#"> You are an admin ! </a>
+        <%} else {%>
+        <a href="/admin"> Become an admin </a>
+        <%} %>
+
         <a href="/logout">Log Out</a>
         <%} else {%>
         <a href="/login">Log in</a>

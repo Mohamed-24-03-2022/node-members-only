@@ -14,8 +14,10 @@ router.post('/login', indexController.loginFormPost);
 router.get('/create-message', indexController.msgFormGet);
 router.post('/create-message', indexController.validateMessage, indexController.msgFormPost);
 
+router.get('/delete-message/:id', indexController.deleteMessage);
+
 router.get('/admin', indexController.adminGet);
-// router.post('/admin', indexController.adminPost);
+router.post('/admin', indexController.adminPost);
 
 router.get('/logout', indexController.logoutGet);
 

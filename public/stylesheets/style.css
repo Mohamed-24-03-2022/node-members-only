@@ -120,3 +120,17 @@ main {
   color: red;
   font-size: small;
 }
+.admin-delete a {
+  background-color: rgba(203, 2, 2, 0.877);
+  color: white;
+  padding: 5px 10px;
+  margin: 5px 0;
+  text-decoration: none;
+  border-radius: 4px;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.admin-delete a:hover {
+  background-color: darkred;
+}

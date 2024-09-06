@@ -38,7 +38,7 @@ app.use(session({
   store: pgStore
 }));
 app.use(passport.session());
-app.use(logger('dev'));
+// app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

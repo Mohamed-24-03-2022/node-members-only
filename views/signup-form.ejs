@@ -6,6 +6,11 @@
       <section class="signup-container">
         <form class="signup-form" action="/signup" method="POST">
           <h2>Sign Up</h2>
+          <% if (locals.errors) { %>
+            <% for( let i = 0; i < locals.errors.length; i++ ) { %>
+              <span class="error"><%=locals.errors[i].msg %></span>
+            <% } %>
+          <% } %>
           <label for="firstName">First Name:</label>
           <input type="text" id="firstName" name="firstName" required />
           <label for="lastName">Last Name:</label>

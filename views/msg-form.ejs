@@ -9,6 +9,12 @@
           <% if (locals.error) { %>
             <span class="error"><%=locals.error.message %></span>
           <% } %>
+          <% if (locals.errors) { %>
+            <% for( let i = 0; i < locals.errors.length; i++ ) { %>
+              <span class="error"><%=locals.errors[i].msg %></span>
+            <% } %>
+          <% } %>
+
           <label for="title">Title:</label>
           <input type="text" id="title" name="title" required />
           <label for="text">Message:</label>

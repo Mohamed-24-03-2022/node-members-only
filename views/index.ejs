@@ -17,6 +17,11 @@
               <span class="author hidden-author"> Log in to see the author </span>
               <%} %>
 
+              <%if(locals.currentUser && locals.currentUser.is_admin){ %>
+              <span class="admin-delete"> 
+                <a href="/delete-message/<%=message.id %>">Delete Message</a> 
+              </span>
+              <%} %>
 
           </li>
           <% }); %>
